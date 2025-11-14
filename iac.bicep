@@ -11,7 +11,7 @@ param vmSize string = 'Standard_B2s'
 param instanceCount int = 2
 
 @description('Admin username for the VMs')
-param adminUsername string
+param adminUsername string = 'azureadmin'
 
 @description('Admin password for the VMs')
 @secure()
