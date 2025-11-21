@@ -2,6 +2,14 @@
 
 This repository demonstrates how **GitHub Copilot** can transform basic Azure infrastructure into **production-grade, resilient deployments** by leveraging the **Azure Proactive Resiliency Library (APRL)** and Microsoft best practices.
 
+## ⚠️ The Problem
+
+Without GitHub Copilot, identifying and fixing resiliency gaps is a manual, error-prone process:
+
+1. **Manual Research**: You must find and read scattered documentation and architecture guides (APRL, Well-Architected Framework).
+2. **Code Inspection**: You have to manually review Infrastructure-as-Code (IaC) line-by-line to spot missing properties like `zones`, `loadBalancer`, or `healthProbe`.
+3. **Complex Implementation**: Writing the correct Bicep code for advanced features (e.g., Rolling Upgrades, ZRS) requires deep syntax knowledge.
+
 ## 🎯 Purpose
 
 Showcase how GitHub Copilot, guided by custom instructions, can:
@@ -18,6 +26,60 @@ Showcase how GitHub Copilot, guided by custom instructions, can:
 - `iac-resilient.bicep`: (Generated during demo) The resilient, production-ready output.
 
 ## 🚀 The Transformation
+
+### 📐 Architecture Diagram
+
+#### Before
+
+```mermaid
+graph LR
+    subgraph Before ["❌ Before: Regional Scope"]
+        direction TB
+        Region1[🌍 Azure Region]
+
+        subgraph Regional_FD ["Regional Fault Domain 🏢"]
+            VMSS1["VMSS (Uniform)<br/>LRS Storage<br/>No Zonal Isolation"]
+        end
+
+        Region1 --> VMSS1
+        style VMSS1 fill:#ffcccc,stroke:#ff0000
+        style Regional_FD fill:#e6f2ff,stroke:#0072C6
+    end
+
+```
+
+#### After
+
+```mermaid
+graph LR
+    subgraph After ["✅ After: Zonal Isolation"]
+        direction TB
+        Region2[🌍 Azure Region]
+        LB[Standard Load Balancer]
+
+        subgraph Zone1 ["Zone 1 ⚡❄️🌐"]
+            VM_Z1[VM Instance]
+        end
+
+        subgraph Zone2 ["Zone 2 ⚡❄️🌐"]
+            VM_Z2[VM Instance]
+        end
+
+        subgraph Zone3 ["Zone 3 ⚡❄️🌐"]
+            VM_Z3[VM Instance]
+        end
+
+        Region2 --> LB
+        LB --> VM_Z1
+        LB --> VM_Z2
+        LB --> VM_Z3
+
+        style LB fill:#ccffcc,stroke:#006600
+        style Zone1 fill:#e6f2ff,stroke:#0072C6
+        style Zone2 fill:#e6f2ff,stroke:#0072C6
+        style Zone3 fill:#e6f2ff,stroke:#0072C6
+    end
+```
 
 ### Before: Basic Deployment (`iac.bicep`)
 
