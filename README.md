@@ -42,8 +42,8 @@ graph LR
         end
 
         Region1 --> VMSS1
-        style VMSS1 fill:#ffcccc,stroke:#ff0000
-        style Regional_FD fill:#e6f2ff,stroke:#0072C6
+        style VMSS1 fill:#3b0e0e,stroke:#ff4d4d,color:#ffffff
+        style Regional_FD fill:#0e2a3b,stroke:#4da6ff,color:#ffffff
     end
 
 ```
@@ -74,10 +74,10 @@ graph LR
         LB --> VM_Z2
         LB --> VM_Z3
 
-        style LB fill:#ccffcc,stroke:#006600
-        style Zone1 fill:#e6f2ff,stroke:#0072C6
-        style Zone2 fill:#e6f2ff,stroke:#0072C6
-        style Zone3 fill:#e6f2ff,stroke:#0072C6
+        style LB fill:#0e3b0e,stroke:#4dff4d,color:#ffffff
+        style Zone1 fill:#0e2a3b,stroke:#4da6ff,color:#ffffff
+        style Zone2 fill:#0e2a3b,stroke:#4da6ff,color:#ffffff
+        style Zone3 fill:#0e2a3b,stroke:#4da6ff,color:#ffffff
     end
 ```
 
