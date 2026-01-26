@@ -4,7 +4,9 @@
 
 2. **Plan**:
 
-   > "Improve the infrastructure resiliency by implementing Azure best practices from APRL and official Microsoft documentation."
+Open iac.bicep file and set it in context.
+
+> "Improve the infrastructure resiliency by implementing Azure best practices from APRL and official Microsoft documentation. Create a plan document with proposed changes."
 
 3. **Agent**:
 
